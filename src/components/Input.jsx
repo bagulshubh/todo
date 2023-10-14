@@ -31,13 +31,20 @@ const Input = (props) => {
   }
 
   const changeHandler = (event)=>{
-    const {name,value} = event.target;
-    setdata(prevState =>({
-      ...prevState,
-      [name]:value
-    }));
-    //console.log(event.target.value);
-    setvalue(event.target.value);
+      if (event.key === 'Enter') {
+        console.log("Enter Pressed")
+        event.preventDefault();
+        clickHandler();
+      }
+      else{    
+        const {name,value} = event.target;
+        setdata(prevState =>({
+          ...prevState,
+          [name]:value
+        }));
+        //console.log(event.target.value);
+        setvalue(event.target.value);
+    }
   }
 
   
@@ -45,7 +52,7 @@ const Input = (props) => {
   return (
     <div className='input-con'>
 
-      <input type='text' placeholder='Enter Task' name='task' onChange={changeHandler} className='input' value={value}></input>
+      <input type='text' placeholder='Enter Task' name='task' onChange={changeHandler} className='input' value={value} onKeyDown={changeHandler}></input>
       <div className='add btn' onClick={clickHandler}><GrFormAdd></GrFormAdd></div>
       
     </div>
