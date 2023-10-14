@@ -13,7 +13,7 @@ const TaskCon = () => {
     } ,[]);
 
   return (
-    <div>
+    <div className='task-con'>
       {
         data.length===0 ? (<div></div>) : (
         data.map( (task)=>(

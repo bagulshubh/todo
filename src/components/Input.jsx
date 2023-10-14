@@ -35,9 +35,9 @@ const Input = () => {
   
 
   return (
-    <div>
+    <div className='input-con'>
 
-      <input type='text' placeholder='Enter Task' name='task' onChange={changeHandler}></input>
+      <input type='text' placeholder='Enter Task' name='task' onChange={changeHandler} className='input'></input>
       <div className='add btn' onClick={clickHandler}><GrFormAdd></GrFormAdd></div>
       
     </div>

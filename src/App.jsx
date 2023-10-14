@@ -5,11 +5,9 @@ import TaskCon from './components/TaskCon'
 
 function App() {
 
-
-
   return (
 
-    <div>
+    <div className='App'>
       <Input></Input>
       <TaskCon></TaskCon>
     </div>

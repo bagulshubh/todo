@@ -1,8 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+
+
+
+
 #root {
-  max-width: 1280px;
+  width: 100vw;
+  height: 100vh;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
   text-align: center;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .logo {
@@ -40,3 +48,72 @@
 .read-the-docs {
   color: #888;
 }
+.App{
+  margin:  0 auto;
+  margin-top: 5rem;
+  font-family: 'Work Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-content: center;
+  box-shadow: rgba(23, 31, 37, 0.842) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  width: 50%;
+  padding: 1.6rem 1.6rem;
+  background-color: #1e1e1e;
+}
+.input-con{
+  display: flex;
+  font-size: 2rem;
+  width: 100%;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.input{
+  width: 60%;
+  font-size: 1.5rem;
+  padding: 0.2rem 0.4rem;
+  color: whitesmoke;
+}
+.btn{
+  font-size: 2rem;
+  background-color: rgb(245, 39, 39);
+  padding: 0.2rem 0.4rem;
+  display: flex;
+  align-content: center;
+  border-radius: 5px;
+  cursor: pointer;
+  transition-duration: 500ms;
+}
+.btn:hover{
+  transform: scale(1.06);
+}
+.task-con{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5vh;
+  justify-content: center;
+  align-items: center;
+}
+.task{
+  box-shadow: rgba(134, 176, 209, 0.3) 0px 1px 2px 0px, rgba(105, 150, 184, 0.15) 0px 2px 6px 2px;
+  width: 100%;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.task-name{
+  padding: 0.5vw;
+}
+.btn-con{
+  padding: 0.5vw;
+  display: flex;
+  gap: 1vw;
+}
+.btn-new{
+  cursor: pointer;
+}
+
