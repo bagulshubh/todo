@@ -1,6 +1,7 @@
 import React from 'react'
 import {RxPencil2} from 'react-icons/rx'
 import {RiDeleteBin3Fill} from 'react-icons/ri'
+import {toast} from 'react-hot-toast'
 
 const Task = (props) => {
     const task = props.task;
@@ -25,10 +26,11 @@ const Task = (props) => {
         )
         
         getdata();
+        toast.error("Task Deleted Successfully")
     }
 
     const updateHandler = async()=>{
-      //handle this 
+      //handle this with toggling input field and div in between and make a request each time toggled this will make the div input and user can give new task as a input rem to carry the value of old task as value to new input this will increase user comfart
     }
 
 

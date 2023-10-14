@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {GrFormAdd} from 'react-icons/gr'
+import toast from 'react-hot-toast'
 
 const Input = (props) => {
 
@@ -26,6 +27,7 @@ const Input = (props) => {
     //console.log(value);
     getdata();
     setvalue("");
+    toast.success("Task Created Successfully")
   }
 
   const changeHandler = (event)=>{
