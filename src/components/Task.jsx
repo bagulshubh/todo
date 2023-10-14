@@ -4,6 +4,7 @@ import {RiDeleteBin3Fill} from 'react-icons/ri'
 
 const Task = (props) => {
     const task = props.task;
+    const getdata = props.getdata
 
     const deleteHandler = async()=>{
       const id = task._id;
@@ -22,7 +23,8 @@ const Task = (props) => {
           body:JSON.stringify(data)
         }
         )
-
+        
+        getdata();
     }
 
     const updateHandler = async()=>{

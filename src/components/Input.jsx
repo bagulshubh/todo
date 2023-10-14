@@ -1,16 +1,19 @@
 import React, { useState } from 'react'
 import {GrFormAdd} from 'react-icons/gr'
 
-const Input = () => {
+const Input = (props) => {
 
   const [data,setdata] = useState({
     task:"",
   });
 
+  const getdata = props.getdata;
+  const [value,setvalue] = useState("");
+
   const clickHandler = async()=>{
 
     const  url = 'http://localhost:5000/api/v1/create';
-    const res = await fetch (url,
+    await fetch (url,
       {
         method:'POST',
         headers: {
@@ -21,6 +24,8 @@ const Input = () => {
       }
       )
     //console.log(value);
+    getdata();
+    setvalue("");
   }
 
   const changeHandler = (event)=>{
@@ -30,6 +35,7 @@ const Input = () => {
       [name]:value
     }));
     //console.log(event.target.value);
+    setvalue(event.target.value);
   }
 
   
@@ -37,7 +43,7 @@ const Input = () => {
   return (
     <div className='input-con'>
 
-      <input type='text' placeholder='Enter Task' name='task' onChange={changeHandler} className='input'></input>
+      <input type='text' placeholder='Enter Task' name='task' onChange={changeHandler} className='input' value={value}></input>
       <div className='add btn' onClick={clickHandler}><GrFormAdd></GrFormAdd></div>
       
     </div>
