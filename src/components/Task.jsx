@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {RxPencil2} from 'react-icons/rx'
 import {RiDeleteBin3Fill} from 'react-icons/ri'
 import {toast} from 'react-hot-toast'
@@ -6,6 +6,8 @@ import {toast} from 'react-hot-toast'
 const Task = (props) => {
     const task = props.task;
     const getdata = props.getdata
+    const [clicked,setclicked] = useState(false);
+    const [value,setvalue] = useState(task.task);
 
     const deleteHandler = async()=>{
       const id = task._id;
@@ -30,13 +32,44 @@ const Task = (props) => {
     }
 
     const updateHandler = async()=>{
-      //handle this with toggling input field and div in between and make a request each time toggled this will make the div input and user can give new task as a input rem to carry the value of old task as value to new input this will increase user comfart
+      setclicked(!clicked)
     }
 
+    const changeHandler = (event)=>{
+      setvalue(event.target.value);
+    }
+
+    const keyHandler = async(event)=>{
+      if(event.key==='Enter'){
+        const  data = {
+          taskid:task._id,
+          task:value
+        }
+        const api = 'http://localhost:5000/api/v1/updateTask'
+        await fetch (api , {
+          method:'PUT',
+          headers: {
+            'Content-type': 'application/json'
+          },
+          mode:'cors',
+          body:JSON.stringify(data)
+        }
+        )
+        task.task = value;
+        setclicked(false);
+        toast.success("Taks Updated Successfully")
+      }
+      
+    }
 
     return (
     <div className='task'>
-      <div className='task-name'>{task.task}</div>
+    {
+      clicked  ? (
+        <input type='text' value={value} onChange={changeHandler} onKeyDown={keyHandler}></input>
+      ) : (<div className='task-name'>{task.task}</div>)
+    }
+      
       <div className='btn-con'>
 
         <RxPencil2 className='btn-new' onClick={updateHandler}></RxPencil2>
