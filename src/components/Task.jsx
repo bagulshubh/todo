@@ -18,7 +18,7 @@ const Task = (props) => {
         taskid:id
       }
 
-      const  url = 'http://localhost:5000/api/v1/undoTask';
+      const  url = 'https://todo-7j3i.onrender.com/api/v1/undoTask';
       await fetch (url,
         {
           method:'PUT',
@@ -41,7 +41,7 @@ const Task = (props) => {
         taskid:id
       }
 
-      const  url = 'http://localhost:5000/api/v1/deleteTask';
+      const  url = 'https://todo-7j3i.onrender.com/api/v1/deleteTask';
       await fetch (url,
         {
           method:'PUT',
@@ -71,7 +71,7 @@ const Task = (props) => {
           taskid:task._id,
           task:value
         }
-        const api = 'http://localhost:5000/api/v1/updateTask'
+        const api = 'https://todo-7j3i.onrender.com/api/v1/updateTask'
         await fetch (api , {
           method:'PUT',
           headers: {

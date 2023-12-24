@@ -13,7 +13,7 @@ const Input = (props) => {
 
   const clickHandler = async()=>{
 
-    const  url = 'http://localhost:5000/api/v1/create';
+    const  url = 'https://todo-7j3i.onrender.com/api/v1/create';
     await fetch (url,
       {
         method:'POST',

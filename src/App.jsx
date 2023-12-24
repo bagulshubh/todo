@@ -15,7 +15,7 @@ function App() {
     } ,[]);
 
     const getdata = async() =>{
-        const url  = 'http://localhost:5000/api/v1/getAllTask'
+        const url  = 'https://todo-7j3i.onrender.com/api/v1/getAllTask'
         const response = await fetch(url);
         const output = await response.json();
         const completedTasks = output.body.filter(task => task.completed === true);
