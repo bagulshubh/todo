@@ -6,10 +6,15 @@ const taskSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
+    completed:{
+        type:Boolean,
+        default:false,
+    },
     createdAt:{
         type:Date,
         required:true,
     }
+
 
 })
 

@@ -73,7 +73,11 @@ exports.deleteTask = async(req,res)=>{
             })
         }
 
-        await Task.findByIdAndDelete({_id:taskid});
+        await Task.findByIdAndUpdate({_id:taskid},{
+            $set:{
+                completed:true
+            },
+        });
 
         return res.status(200).json({
             success:"True",
@@ -88,6 +92,43 @@ exports.deleteTask = async(req,res)=>{
         })
     }
 
+}
+
+exports.undoTask = async(req,res)=>{
+   
+
+        try{
+    
+            const {taskid} = req.body;
+    
+            if(!taskid){
+                return res.status(404).json({
+                    success:"False",
+                    message:"All tasks are required"
+                })
+            }
+    
+            await Task.findByIdAndUpdate({_id:taskid},{
+                $set:{
+                    completed:false
+                },
+            });
+
+    
+            return res.status(200).json({
+                success:"True",
+                message:"Task Deleted successfully"
+            })
+    
+        }
+        catch(err){
+            return res.status(500).json({
+                success:"False",
+                message:err.message
+            })
+        }
+    
+    
 }
 
 exports.updateTask = async(req,res)=>{

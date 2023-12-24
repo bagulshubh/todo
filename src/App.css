@@ -104,6 +104,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-left: 0.2rem;
+}
+.dashed{
+  text-decoration: line-through;
+  text-decoration-color: red;
 }
 .task-name{
   padding: 0.5vw;
@@ -116,4 +121,24 @@
 .btn-new{
   cursor: pointer;
 }
+.task-con-comp{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5vh;
+  justify-content: center;
+  align-items: center;
+  border-top: 2px solid white;
+  padding-top: 2rem;
+}
 
+@media only screen and (max-width: 800px) {
+
+  .App{
+    width: 90%;
+    margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+}

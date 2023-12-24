@@ -1,13 +1,39 @@
 import React, { useState } from 'react'
 import {RxPencil2} from 'react-icons/rx'
-import {RiDeleteBin3Fill} from 'react-icons/ri'
 import {toast} from 'react-hot-toast'
+import {IoMdDoneAll} from 'react-icons/io'
+import {ImCross} from 'react-icons/im'
 
 const Task = (props) => {
     const task = props.task;
     const getdata = props.getdata
     const [clicked,setclicked] = useState(false);
     const [value,setvalue] = useState(task.task);
+    const comp  = props.comp || false
+
+    const undoHandler = async()=>{
+
+      const id = task._id;
+      const data = {
+        taskid:id
+      }
+
+      const  url = 'http://localhost:5000/api/v1/undoTask';
+      await fetch (url,
+        {
+          method:'PUT',
+          headers: {
+            'Content-type': 'application/json'
+          },
+          mode:'cors',
+          body:JSON.stringify(data)
+        }
+        )
+        
+        getdata();
+        toast.error("Task Undo Successfully")
+
+    }
 
     const deleteHandler = async()=>{
       const id = task._id;
@@ -18,7 +44,7 @@ const Task = (props) => {
       const  url = 'http://localhost:5000/api/v1/deleteTask';
       await fetch (url,
         {
-          method:'DELETE',
+          method:'PUT',
           headers: {
             'Content-type': 'application/json'
           },
@@ -66,15 +92,18 @@ const Task = (props) => {
     <div className='task'>
     {
       clicked  ? (
-        <input type='text' value={value} onChange={changeHandler} onKeyDown={keyHandler}></input>
-      ) : (<div className='task-name'>{task.task}</div>)
+        <input type='text' value={value} onChange={changeHandler} onKeyDown={keyHandler} className='task-name input'></input>
+      ) :  (<div className={ comp? 'task dashed' : 'task' }>{task.task}</div>)
     }
       
       <div className='btn-con'>
 
         <RxPencil2 className='btn-new' onClick={updateHandler}></RxPencil2>
-        <RiDeleteBin3Fill className='btn-new' onClick={deleteHandler}></RiDeleteBin3Fill>
-      
+        {
+          comp ? <ImCross className='btn-new' onClick={undoHandler}></ImCross> : 
+        
+            <IoMdDoneAll className='btn-new' onClick={deleteHandler}></IoMdDoneAll>
+        }
       </div>
     </div>
   )
