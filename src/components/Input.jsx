@@ -3,7 +3,7 @@ import {GrFormAdd} from 'react-icons/gr'
 import toast from 'react-hot-toast'
 
 const Input = (props) => {
-
+  const id = props.id
   const [data,setdata] = useState({
     task:"",
   });
@@ -25,7 +25,7 @@ const Input = (props) => {
       }
       )
     //console.log(value);
-    getdata();
+    getdata(id);
     setvalue("");
     toast.success("Task Created Successfully")
   }

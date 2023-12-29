@@ -2,6 +2,7 @@ const express = require('express');
 const  app = express();
 
 const taskRoutes = require('./routes/Task')
+const projectRoutes = require("./routes/Project")
 
 const database = require('./configuration/dbConnection');
 const  cors = require("cors");
@@ -24,6 +25,7 @@ const corsOptions ={
 app.use(cors(corsOptions)) // Use this after the variable declaration
 
 app.use("/api/v1/", taskRoutes);
+app.use("/api/v1/project",projectRoutes)
 
 app.get("/", (req, res) => {
 	return res.json({

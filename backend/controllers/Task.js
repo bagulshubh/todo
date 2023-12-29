@@ -1,12 +1,13 @@
 const Task = require('../modules/task');
+const Project = require('../modules/project')
 
 exports.createTask = async (req,res)=>{
 
     try{
 
-        const {task} = req.body;
+        const {task,projectId} = req.body;
 
-        if(!task){
+        if(!task || !projectId){
             return res.status(402).json({
                 success:"False",
                 message:"Task filed is required"
@@ -20,10 +21,18 @@ exports.createTask = async (req,res)=>{
             }
         );
 
+        const updatedProject = await Project.findByIdAndUpdate(projectId,{
+            $push:{
+                tasks:response.id
+            },
+        },
+        {new:true}
+        )
+
         return res.status(200).json({
             success:"True",
             message:"Task  created successfully",
-            response
+            body:updatedProject
         })
 
 

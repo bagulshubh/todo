@@ -10,6 +10,7 @@ const Task = (props) => {
     const [clicked,setclicked] = useState(false);
     const [value,setvalue] = useState(task.task);
     const comp  = props.comp || false
+    const id = props.id;
 
     const undoHandler = async()=>{
 
@@ -30,7 +31,7 @@ const Task = (props) => {
         }
         )
         
-        getdata();
+        getdata(id);
         toast.error("Task Undo Successfully")
 
     }
@@ -53,7 +54,7 @@ const Task = (props) => {
         }
         )
         
-        getdata();
+        getdata(id);
         toast.error("Task Deleted Successfully")
     }
 

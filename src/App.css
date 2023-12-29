@@ -61,6 +61,15 @@
   padding: 1.6rem 1.6rem;
   background-color: #1e1e1e;
 }
+.TaskPage{
+  margin:  0 auto;
+  font-family: 'Work Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-content: center;
+  width: 100%;
+}
 .input-con{
   display: flex;
   font-size: 2rem;
